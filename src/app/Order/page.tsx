@@ -2,8 +2,16 @@ import Sidebar from "@/components/sidebar/Sidebar"
 import TopBar from "@/components/topbar/TopBar"
 import Order from "./Order"
 import SidebarSM from "@/components/sidebar/SidebarSM"
+import getUser from "@/components/GetUser"
+import { redirect } from "next/navigation";
 
-const page = () => {
+const page = async () => {
+    const admin = await getUser()
+
+    if (!admin) {
+        redirect("/Login")
+    }
+
     return (
         <div className="flex">
             <div className="hidden md:block min-h-screen">
