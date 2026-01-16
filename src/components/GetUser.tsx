@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import { api } from '@/lib/api';
 
 async function getUser() {
     try {
@@ -7,17 +8,13 @@ async function getUser() {
 
         if (!token) return null;
 
-        const res = await fetch("http://localhost:3001/admin/me", {
+        const res = await api.get("/admin/me", {
             headers: {
                 cookie: `jwt=${token}`,
             },
-            cache: "no-store",
         });
 
-        if (!res.ok) return null;
-
-        const data = await res.json();
-        return data?.admin ?? null;
+        return res.data?.admin ?? null;
     } catch {
         return null;
     }

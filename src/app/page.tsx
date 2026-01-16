@@ -8,7 +8,7 @@ const page = async () => {
     redirect("/Dashboard");
   }
 
-  redirect("/Login");
+  return redirect("/Login");
 };
 
 export default page;
