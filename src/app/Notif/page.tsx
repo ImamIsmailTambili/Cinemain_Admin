@@ -2,13 +2,8 @@ import Sidebar from "@/components/sidebar/Sidebar"
 import SidebarSM from "@/components/sidebar/SidebarSM"
 import TopBar from "@/components/topbar/TopBar"
 import Notif from "./Notif"
-import { useAdmin } from "@/components/UseAdmin"
 
 const page = () => {
-    const { admin, loading } = useAdmin();
-
-    if (loading) return null;
-
     return (
         <div className="flex">
             <div className="hidden md:block min-h-screen">
@@ -18,7 +13,7 @@ const page = () => {
             <div className="w-full">
                 <TopBar />
                 <div className="hidden md:block w-full p-8">
-                    <Notif admin={admin} />
+                    <Notif />
                 </div>
 
                 {/* Mobile View */}
@@ -27,7 +22,7 @@ const page = () => {
                 </div>
 
                 <div className="md:hidden min-w-screen">
-                    <Notif admin={admin} />
+                    <Notif />
                 </div>
                 {/* Mobile View */}
             </div>
