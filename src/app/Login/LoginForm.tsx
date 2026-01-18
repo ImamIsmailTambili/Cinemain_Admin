@@ -24,7 +24,7 @@ const LoginForm = () => {
 
             console.log("Login success:", res.data);
 
-            router.push("/Dashboard");
+            router.push("/");
         } catch (err: any) {
             alert(err?.response?.data?.error || "Login gagal");
         }
