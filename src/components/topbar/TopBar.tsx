@@ -6,7 +6,7 @@ const TopBar = () => {
     return (
         <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between md:justify-end px-3 md:px-10">
             {/* Logo */}
-            <Link href="/Dashboard" className="md:hidden text-2xl font-logo text-blue-950">
+            <Link href="/" className="md:hidden text-2xl font-logo text-blue-950">
                 Cinemain
             </Link>
 
