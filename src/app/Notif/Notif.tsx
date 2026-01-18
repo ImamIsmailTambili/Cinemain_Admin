@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import IsiNotif from "./IsiNotif";
-import ReadNotif from "./ReadNotif";
 
 /* ===== TYPES ===== */
 type Notification = {
@@ -12,7 +10,15 @@ type Notification = {
     isRead: boolean;
 };
 
-const Notif = () => {
+type Admin = {
+    username?: string;
+};
+
+type Props = {
+    admin: Admin | null;
+};
+
+const Notif = ({ admin }: Props) => {
     const [data, setData] = useState<Notification[]>([]);
     const [tab, setTab] = useState<"Unread" | "Read">("Unread");
 
@@ -43,6 +49,9 @@ const Notif = () => {
             console.error(err);
         }
     };
+
+    const initials =
+        admin?.username?.slice(0, 2)?.toUpperCase() ?? "";
 
     return (
         <div className="space-y-6 md:space-y-8">
@@ -96,9 +105,19 @@ const Notif = () => {
                                         onClick={() => markAsRead(n.id)}
                                         className="flex w-full items-center gap-3 border border-blue-950 p-4 md:mb-3 text-left cursor-pointer"
                                     >
-                                        <IsiNotif
-                                            message={n.message}
-                                        />
+                                        <div className="w-10 h-10 rounded-full bg-blue-950 flex items-center justify-center">
+                                            <span className="text-sm font-semibold text-white">
+                                                {initials}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold">
+                                                {admin?.username?.toUpperCase()}
+                                            </h3>
+                                            <p className="text-sm">
+                                                {n.message}
+                                            </p>
+                                        </div>
                                     </button>
                                 ))
                             )}
@@ -111,7 +130,19 @@ const Notif = () => {
                                 key={n.id}
                                 className="flex items-center gap-3 border border-blue-950 p-4 md:mb-3"
                             >
-                                <ReadNotif message={n.message} />
+                                <div className="w-10 h-10 rounded-full bg-blue-950 flex items-center justify-center">
+                                    <span className="text-sm font-semibold text-white">
+                                        {initials}
+                                    </span>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold">
+                                        {admin?.username?.toUpperCase()}
+                                    </h3>
+                                    <p className="text-sm text-gray-600">
+                                        {n.message}
+                                    </p>
+                                </div>
                             </div>
                         ))
                         }
