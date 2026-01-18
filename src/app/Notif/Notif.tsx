@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { useAdmin } from "@/components/UseAdmin"
 
 /* ===== TYPES ===== */
 type Notification = {
@@ -10,17 +11,12 @@ type Notification = {
     isRead: boolean;
 };
 
-type Admin = {
-    username?: string;
-};
-
-type Props = {
-    admin: Admin | null;
-};
-
-const Notif = ({ admin }: Props) => {
+const Notif = () => {
     const [data, setData] = useState<Notification[]>([]);
     const [tab, setTab] = useState<"Unread" | "Read">("Unread");
+    const { admin, loading } = useAdmin();
+
+    if (loading) return null;
 
     /* ===== FETCH ===== */
     useEffect(() => {
