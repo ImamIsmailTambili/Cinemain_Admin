@@ -4,9 +4,15 @@ import { api } from '@/lib/api';
 async function getUser() {
     try {
         const cookieStore = await cookies();
-        const token = cookieStore.get("jwt")?.value;
+        console.log("Cookie:", cookieStore.getAll())
 
-        if (!token) return null;
+        const token = cookieStore.get("jwt")?.value;
+        console.log("JWT:", token);
+
+        if (!token) {
+            console.log("NO TOKEN");
+            return null;
+        };
 
         const res = await api.get("/admin/me", {
             headers: {
