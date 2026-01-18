@@ -4,13 +4,17 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 
-export default function CheckLogin({ children }: { children: React.ReactNode }) {
-    const router = useRouter();
+interface Props {
+  children: React.ReactNode;
+}
 
-    useEffect(() => {
-        api.get("/admin/me", { withCredentials: true })
-            .catch(() => router.replace("/Login"));
-    }, []);
+export default function CheckLogin({ children }: Props) {
+  const router = useRouter();
 
-    return <>{children}</>;
+  useEffect(() => {
+    api.get("/admin/me", { withCredentials: true })
+      .catch(() => router.replace("/Login"));
+  }, [router]);
+
+  return <>{children}</>;
 }
