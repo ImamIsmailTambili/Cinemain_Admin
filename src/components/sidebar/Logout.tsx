@@ -2,22 +2,20 @@
 
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { api } from "@/lib/api";
 
 const Logout = () => {
     const router = useRouter();
 
     const handleLogout = async () => {
         try {
-            await fetch("http://localhost:3001/admin/logout", {
-                method: "POST",
-                credentials: "include",
+            await api.post("/admin/logout", {}, {
+                withCredentials: true,
             });
 
-            // PENTING: replace + refresh
             router.replace("/Login");
-            router.refresh();
-        } catch (err) {
-            console.error("Logout failed", err);
+        } catch (error) {
+            console.error("Logout failed", error);
         }
     };
 
@@ -28,9 +26,7 @@ const Logout = () => {
                 className="w-full flex items-center md:gap-3 px-2 md:px-4 py-3 md:rounded-lg hover:bg-red-50 hover:text-red-600 transition-all"
             >
                 <LogOut className="w-5 h-5" />
-                <span className="hidden md:block text-sm font-medium">
-                    Logout
-                </span>
+                <span className="hidden md:block text-sm font-medium">Logout</span>
             </button>
         </div>
     );
