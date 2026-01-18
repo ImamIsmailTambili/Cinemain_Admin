@@ -19,6 +19,7 @@ async function getUser() {
                 cookie: `jwt=${token}`,
             },
             cache: "no-store",
+            next: { revalidate: 0 },
         });
 
         const data = await res.json();
