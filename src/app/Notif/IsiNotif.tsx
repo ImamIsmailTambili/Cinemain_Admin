@@ -1,5 +1,3 @@
-"use client"
-
 import { useAdmin } from "@/components/UseAdmin"
 
 type Props = {
