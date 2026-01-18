@@ -4,7 +4,7 @@ import TopBar from "@/components/topbar/TopBar"
 import Notif from "./Notif"
 import { useAdmin } from "@/components/UseAdmin"
 
-const page = async () => {
+const page = () => {
     const { admin, loading } = useAdmin();
 
     if (loading) return null;
