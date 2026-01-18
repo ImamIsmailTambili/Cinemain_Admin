@@ -12,7 +12,7 @@ const Logout = () => {
             credentials: "include",
         });
 
-        router.push("/");
+        router.push("/Login");
     };
 
     return (
