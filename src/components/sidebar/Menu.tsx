@@ -7,7 +7,7 @@ import { Film, Home, MapPin, ShoppingCart, Users } from "lucide-react";
 const Menu = () => {
     const pathname = usePathname();
     const menuItems = [
-        { id: "dashboard", label: "Dashboard", icon: Home, link: "/Dashboard" },
+        { id: "dashboard", label: "Dashboard", icon: Home, link: "/" },
         { id: "films", label: "Films", icon: Film, link: "/Film" },
         { id: "cinemas", label: "Cinemas", icon: MapPin, link: "/Cinema" },
         { id: "orders", label: "Orders", icon: ShoppingCart, link: "/Order" },
