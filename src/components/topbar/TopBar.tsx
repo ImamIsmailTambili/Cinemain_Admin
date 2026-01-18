@@ -1,11 +1,9 @@
-"use client"
-
+import getUser from '../GetUser';
 import NotifTopbar from './NotifTopbar';
 import Link from 'next/link';
-import { useAdmin } from '../UseAdmin';
 
 const TopBar = async () => {
-    const { admin } = await useAdmin();
+    const admin = await getUser();
 
     return (
         <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between md:justify-end px-3 md:px-10">
