@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { useAdmin } from "@/components/UseAdmin";
 
 /* ===== TYPES ===== */
 type Notification = {
@@ -10,15 +11,7 @@ type Notification = {
     isRead: boolean;
 };
 
-type Admin = {
-    username?: string;
-};
-
-type Props = {
-    admin: Admin | null;
-};
-
-const Notif = ({ admin }: Props) => {
+const Notif = () => {
     const [data, setData] = useState<Notification[]>([]);
     const [tab, setTab] = useState<"Unread" | "Read">("Unread");
 
@@ -50,8 +43,8 @@ const Notif = ({ admin }: Props) => {
         }
     };
 
-    const initials =
-        admin?.username?.slice(0, 2)?.toUpperCase() ?? "";
+    const { admin } = useAdmin()
+    const initials = admin?.username?.slice(0, 2)?.toUpperCase() ?? "";
 
     return (
         <div className="space-y-6 md:space-y-8">
