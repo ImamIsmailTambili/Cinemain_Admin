@@ -1,3 +1,5 @@
+"use client";
+
 import Sidebar from "@/components/sidebar/Sidebar"
 import SidebarSM from "@/components/sidebar/SidebarSM"
 import TopBar from "@/components/topbar/TopBar"
