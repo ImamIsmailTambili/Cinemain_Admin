@@ -1,5 +1,5 @@
 import { Film, MapPin, ShoppingCart, DollarSign } from 'lucide-react';
-import { StatCard } from '@/components/Statcard';
+import { StatCard } from './Statcard';
 import DashboardChart from './DashboardChart';
 import { api } from '@/lib/api';
 

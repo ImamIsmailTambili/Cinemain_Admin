@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost:3001",
+    baseURL: "https://cinemain-backend.up.railway.app",
     withCredentials: true, // penting untuk cookie JWT
 });
