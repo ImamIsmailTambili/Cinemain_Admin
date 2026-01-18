@@ -21,7 +21,8 @@ async function getUser() {
             cache: "no-store",
         });
 
-        return res.data?.admin ?? null;
+        const data = await res.json();
+        return data?.admin ?? null;
     } catch {
         return null;
     }
