@@ -14,10 +14,11 @@ async function getUser() {
             return null;
         };
 
-        const res = await api.get("/admin/me", {
+        const res = await fetch("https://cinemain-backend.up.railway.app/auth/me", {
             headers: {
                 cookie: `jwt=${token}`,
             },
+            cache: "no-store",
         });
 
         return res.data?.admin ?? null;
