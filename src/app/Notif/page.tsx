@@ -2,10 +2,15 @@ import Sidebar from "@/components/sidebar/Sidebar"
 import SidebarSM from "@/components/sidebar/SidebarSM"
 import TopBar from "@/components/topbar/TopBar"
 import Notif from "./Notif"
-import { useAdmin } from "@/components/UseAdmin"
+import getUser from "@/components/GetUser"
+import { redirect } from "next/navigation";
 
-const page = () => {
-    const { admin } = useAdmin();
+const page = async () => {
+    const admin = await getUser();
+
+    if (!admin) {
+        redirect("/Login")
+    }
 
     return (
         <div className="flex">
